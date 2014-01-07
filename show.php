@@ -6,10 +6,12 @@ $result=mysql_query($sql);
 <p><a href="add.php">我要留言</a></p>
 <table width="500" border="1" cellspacing="0" cellpadding="0">
   <tr>
-    <td>標題</td>
+    <td>id</td>
     <td>內容</td>
-    <td>留言者</td>
-    <td>時間</td>
+    <td>修改時間</td>
+    <td>新增時間</td>
+    <td>刪除</td>
+    <td>修改</td>
   </tr>
  
   <?php
@@ -19,10 +21,12 @@ $result=mysql_query($sql);
         for($i=0;$i<$num;$i++){
                 $row=mysql_fetch_array($result);
                         echo "<tr>";
-//                        echo "<td>".$row['title']."</td>";
+                        echo "<td>".$row['id']."</td>";
                         echo "<td>".$row['message']."</td>";
                         echo "<td>".$row['update_time']."</td>";
                         echo "<td>".$row['new_time']."</td>";
+                        echo "<td><a href='delete.php?id=".$row['id']."'>delete</a></td>";
+                        echo "<td><a href='add.php?id=".$row['id']."&act=edit'>modify</a></td>";
                         echo "</tr>";
         }
  

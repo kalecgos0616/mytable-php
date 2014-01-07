@@ -1,13 +1,15 @@
 <?php
-include("db_conn.php");
-$time=date("Y-m-d g:i:s");
-$sql="INSERT INTO note (message, new_time) VALUES ('$_POST[content]', '$time')";
-echo "<br>SQL:$sql";
-//exit;
-$finish="留言完成";
-mysql_query($sql); 
+if($_POST['act']='edit'){
+	$message = '修改成功';
+	$output = shell_exec("./mytable note update $_POST[id] $_POST[content]");
+} else {
+	$message = '留言成功';
+	$output = shell_exec("./mytable note add $_POST[content]");
+}
+echo "<pre>$output</pre>";
+
 ?>
 <script>
-alert("<?echo $finish?>");
+alert("<?echo $message?>");
 location.href="show.php";
 </script>

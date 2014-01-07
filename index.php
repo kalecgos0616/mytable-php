@@ -1,6 +1,3 @@
-<?php
-
-echo "TEST";
-
-
-?>
+<script>
+location.href = 'show.php';
+</script>
